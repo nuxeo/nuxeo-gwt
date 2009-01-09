@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<classpath>
+   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+   <classpathentry kind="src" path="src"/>
+   <classpathentry kind="src" path="../nuxeo-platform-gwt-core"/>
+   <classpathentry kind="lib" path="/gwt-user.jar"/>
+   <classpathentry kind="lib" path="/smartgwt.jar"/>
+   <classpathentry kind="var" path="JUNIT_HOME/junit.jar"/>   
+   <classpathentry kind="output" path="bin"/>
+</classpath>
