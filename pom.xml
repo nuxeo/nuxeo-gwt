@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.nuxeo</groupId>
+    <artifactId>nuxeo-ecm</artifactId>
+    <version>5.2-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.nuxeo.ecm.gwt</groupId>
+  <artifactId>nuxeo-gwt-parent</artifactId>
+  <name>Nuxeo GWT Parent</name>
+  <packaging>pom</packaging>
+  <description>Nuxeo GWT: Parent.</description>
+
+  <properties>
+    <nuxeo.core.version>1.5-SNAPSHOT</nuxeo.core.version>
+    <nuxeo.gwt.version>5.2-SNAPSHOT</nuxeo.gwt.version>
+    <nuxeo.webengine.version>5.2-SNAPSHOT</nuxeo.webengine.version>
+  </properties>
+
+  <modules>
+    <module>nuxeo-gwt-server</module>
+    <module>nuxeo-gwt-runtime</module>
+    <module>nuxeo-gwt-ui</module>
+    <module>nuxeo-gwt-app-default</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.nuxeo.ecm.core</groupId>
+        <artifactId>nuxeo-core-api</artifactId>
+        <version>${nuxeo.core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.ecm.webengine</groupId>
+        <artifactId>nuxeo-webengine-core</artifactId>
+        <version>${nuxeo.webengine.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.ecm.gwt</groupId>
+        <artifactId>nuxeo-gwt-runtime</artifactId>
+        <version>${nuxeo.gwt.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.smartgwt</groupId>
+        <artifactId>smartgwt</artifactId>
+        <version>1.0-20081121</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <profiles>
+    <profile>
+      <id>gwt-dev-windows</id>
+      <properties>
+        <platform>windows</platform>
+      </properties>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <os>
+          <family>windows</family>
+        </os>
+      </activation>
+    </profile>
+    <profile>
+      <id>gwt-dev-mac</id>
+      <properties>
+        <platform>mac</platform>
+      </properties>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <os>
+          <family>mac</family>
+        </os>
+      </activation>
+    </profile>
+    <profile>
+      <id>gwt-dev-linux</id>
+      <properties>
+        <platform>linux</platform>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <os>
+          <name>linux</name>
+        </os>
+      </activation>
+    </profile>
+  </profiles>
+
+  <scm>
+    <connection>scm:hg:http://hg.nuxeo.org/nuxeo/nuxeo-gwt</connection>
+    <developerConnection>scm:hg:https://hg.nuxeo.org/nuxeo/nuxeo-gwt</developerConnection>
+    <url>http://hg.nuxeo.org/nuxeo/nuxeo-gwt</url>
+  </scm>
+
+</project>

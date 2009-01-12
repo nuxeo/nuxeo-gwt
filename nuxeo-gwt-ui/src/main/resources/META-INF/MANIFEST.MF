@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Nuxeo GWT UI
+Bundle-SymbolicName: org.nuxeo.ecm.gwt.ui;singleton:=true
+Bundle-Vendor: Nuxeo
