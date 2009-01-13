@@ -19,6 +19,16 @@
       <artifactId>gwt-user</artifactId>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.nuxeo.ecm.gwt</groupId>
+      <artifactId>nuxeo-gwt-runtime</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.smartgwt</groupId>
+      <artifactId>smartgwt</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -31,7 +41,29 @@
             <include>**/*.gwt.xml</include>
           </includes>
       </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
     </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <module>org.nuxeo.ecm.gwt.ui.UI_app</module>
+              <outputDirectory>${project.build.outputDirectory}/web/gwt/skin/resources</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
