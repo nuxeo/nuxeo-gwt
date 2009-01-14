@@ -24,7 +24,6 @@
     <module>nuxeo-gwt-server</module>
     <module>nuxeo-gwt-runtime</module>
     <module>nuxeo-gwt-ui</module>
-    <module>nuxeo-gwt-app-default</module>
   </modules>
 
   <dependencyManagement>

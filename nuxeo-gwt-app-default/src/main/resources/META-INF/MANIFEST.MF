@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Nuxeo GWT Default Application
-Bundle-SymbolicName: org.nuxeo.ecm.gwt.app.base;singleton:=true
-Bundle-Vendor: Nuxeo
-Require-Bundle: org.nuxeo.ecm.webengine.core
-Nuxeo-Require: org.nuxeo.ecm.webengine.core
-Nuxeo-Component: OSGI-INF/gwt-default-webengine-deployment-contrib.xml 
