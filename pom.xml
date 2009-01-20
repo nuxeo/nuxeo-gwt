@@ -18,6 +18,7 @@
     <nuxeo.core.version>1.5-SNAPSHOT</nuxeo.core.version>
     <nuxeo.gwt.version>5.2-SNAPSHOT</nuxeo.gwt.version>
     <nuxeo.webengine.version>5.2-SNAPSHOT</nuxeo.webengine.version>
+    <nuxeo.platform.version>5.2-SNAPSHOT</nuxeo.platform.version>
   </properties>
 
   <modules>
@@ -43,6 +44,13 @@
         <artifactId>nuxeo-gwt-runtime</artifactId>
         <version>${nuxeo.gwt.version}</version>
       </dependency>
+      
+      <dependency>
+        <groupId>org.nuxeo.ecm.platform</groupId>
+        <artifactId>nuxeo-platform-directory-api</artifactId>
+        <version>${nuxeo.platform.version}</version>
+      </dependency>
+      
       <dependency>
         <groupId>com.smartgwt</groupId>
         <artifactId>smartgwt</artifactId>

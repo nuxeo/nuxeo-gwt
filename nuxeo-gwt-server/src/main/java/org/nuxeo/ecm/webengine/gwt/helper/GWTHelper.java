@@ -24,12 +24,16 @@ import net.sf.json.JSONObject;
 
 import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
+import org.nuxeo.ecm.core.api.DataModel;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.DocumentModelList;
 import org.nuxeo.ecm.core.api.DocumentRef;
 import org.nuxeo.ecm.core.api.model.DocumentPart;
+import org.nuxeo.ecm.directory.Session;
+import org.nuxeo.ecm.directory.api.DirectoryService;
 import org.nuxeo.ecm.webengine.WebException;
 import org.nuxeo.ecm.webengine.util.JSonDocumentExporter;
+import org.nuxeo.runtime.api.Framework;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
@@ -47,7 +51,7 @@ public class GWTHelper {
 
 
     public static JSONArray getChildren(CoreSession session) { // the roots
-        try {            
+        try {
             return getChildren(session, session.getRootDocument(), null);
         } catch (ClientException e) {
             throw WebException.wrap(e);
@@ -69,7 +73,7 @@ public class GWTHelper {
     public static JSONArray getChildren(CoreSession session, DocumentModel doc) {
         return getChildren(session, doc, doc.getId());
     }
-    
+
     public static JSONArray getChildren(CoreSession session, DocumentModel doc, String parentRef) {
         JSONArray list  = new JSONArray();
         if( doc == null ){
@@ -173,7 +177,7 @@ public class GWTHelper {
 
     public static JSONObject doc2JSon(DocumentModel doc, String... schemas) {
         try {
-            DocumentRef parentRef = doc.getParentRef(); 
+            DocumentRef parentRef = doc.getParentRef();
             JSONObject obj = new JSONObject();
             obj.put("id", doc.getId());
             obj.put("parentId", parentRef == null ? null : parentRef.reference());
@@ -205,7 +209,34 @@ public class GWTHelper {
         }
     }
 
+    public static JSONArray getVocabulary(String vocabularyName) {
+        try {
+            JSONArray list  = new JSONArray();
 
+            DirectoryService dService = Framework.getService(DirectoryService.class);
+
+            Session session = dService.open(vocabularyName);
+            try {
+                DocumentModelList docs = session.getEntries();
+                for (DocumentModel doc : docs) {
+                    JSONObject obj = new JSONObject();
+
+                    DataModel dm = doc.getDataModel("vocabulary");
+
+                    obj.put("id", dm.getData("id"));
+                    obj.put("label", dm.getData("id"));
+
+                    list.add(obj);
+                }
+            } finally {
+                session.close();
+            }
+
+            return list;
+        } catch(Exception e) {
+            throw WebException.wrap("Failed to export vocabulary '" + vocabularyName + "' as json: ", e);
+        }
+    }
 
 
 
