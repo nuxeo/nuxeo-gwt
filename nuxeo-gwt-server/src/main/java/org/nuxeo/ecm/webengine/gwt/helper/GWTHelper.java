@@ -238,7 +238,58 @@ public class GWTHelper {
         }
     }
 
+    public static JSONArray getHierarchicalVocabulary(String vocabularyName) {
+        String voca = "";
+        String subVoca = "";
+        if ("topic".equals(vocabularyName)) {
+            voca = "topic";
+            subVoca = "subtopic";
+        } else if ("continent".equals(vocabularyName)) {
+            voca = "continent";
+            subVoca = "country";
+        } else {
+            return new JSONArray();
+        }
+        try {
+            JSONArray list  = new JSONArray();
 
+            DirectoryService dService = Framework.getService(DirectoryService.class);
+
+            Session topicSession = dService.open(voca);
+            Session subtopicSession = dService.open(subVoca);
+            try {
+                DocumentModelList topics = topicSession.getEntries();
+                DocumentModelList subtopics = subtopicSession.getEntries();
+
+                for (DocumentModel topic : topics) {
+                    JSONObject obj = new JSONObject();
+                    DataModel dm = topic.getDataModel("vocabulary");
+                    obj.put("id", dm.getData("id"));
+                    obj.put("label", dm.getData("id"));
+                    JSONArray ar  = new JSONArray();
+                    for (DocumentModel subtopic : subtopics) {
+                        DataModel subTopicDm = subtopic.getDataModel("xvocabulary");
+                        if (dm.getData("id").equals(subTopicDm.getData("parent"))) {
+                            JSONObject o = new JSONObject();
+                            o.put("id", dm.getData("id") + "/" + subTopicDm.getData("id"));
+                            o.put("label", subTopicDm.getData("id"));
+                            ar.add(o);
+                        }
+                    }
+                    if (!ar.isEmpty()) {
+                        obj.put("children", ar);
+                    }
+                    list.add(obj);
+                }
+            } finally {
+                topicSession.close();
+                subtopicSession.close();
+            }
+            return list;
+        } catch(Exception e) {
+            throw WebException.wrap("Failed to export vocabulary '" + vocabularyName + "' as json: ", e);
+        }
+    }
 
 //    public static DocumentModel fromJSon(JSONObject obj) {
 //        String id = obj.getString("id");
