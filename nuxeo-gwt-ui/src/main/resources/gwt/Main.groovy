@@ -15,7 +15,7 @@ import net.sf.json.*;
 
 @WebObject(type="gwt", guard="user=Administrator")
 @Produces(["text/html", "*/*"])
-public class Main extends DefaultModule {
+public class Main extends ModuleRoot {
 
 
   @Path("repository")

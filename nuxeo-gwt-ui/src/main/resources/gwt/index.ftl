@@ -21,7 +21,7 @@
 
     <!-- configure nuxeo app -->
     <script laguage="javascript">
-      var isomorphicDir = "${skinPath}/resources/org.nuxeo.ecm.gwt.ui.UI_app/js/sc/";
+      var isomorphicDir = "${skinPath}/org.nuxeo.ecm.gwt.ui.UI_app/js/sc/";
 
       <#assign username = Context.principal.name>
       var nx = {
@@ -93,7 +93,7 @@
         <div class="loadingIndicator">
            <table cellpadding="2", cellspacing="0" border="0">
               <tr valign="middle"><td align="right">
-           <img src="${skinPath}/resources/org.nuxeo.ecm.gwt.ui.UI_apporg.nuxeo.ecm.gwt.ui.Default/images/loading_app.gif" width="32" height="32" hspace="2"/>
+           <img src="${skinPath}/org.nuxeo.ecm.gwt.ui.UI_apporg.nuxeo.ecm.gwt.ui.Default/images/loading_app.gif" width="32" height="32" hspace="2"/>
               </td><td align="left">
            <span id="loadingMsg">Loading Application...</span>
               </td><tr>
@@ -110,7 +110,7 @@
     <!-- If you add any GWT meta tags, they must   -->
     <!-- be added before this line.                -->
     <!--                                           -->
-    <script type="text/javascript" language="javascript" src="${skinPath}/resources/org.nuxeo.ecm.gwt.ui.UI_app/org.nuxeo.ecm.gwt.ui.UI_app.nocache.js"></script>
+    <script type="text/javascript" language="javascript" src="${skinPath}/org.nuxeo.ecm.gwt.ui.UI_app/org.nuxeo.ecm.gwt.ui.UI_app.nocache.js"></script>
 
     <!--script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading Core API...';</script-->
 
