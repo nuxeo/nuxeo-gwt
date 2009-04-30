@@ -44,13 +44,13 @@
         <artifactId>nuxeo-gwt-runtime</artifactId>
         <version>${nuxeo.gwt.version}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>org.nuxeo.ecm.platform</groupId>
         <artifactId>nuxeo-platform-directory-api</artifactId>
         <version>${nuxeo.services.version}</version>
       </dependency>
-      
+
       <dependency>
         <groupId>com.smartgwt</groupId>
         <artifactId>smartgwt</artifactId>
