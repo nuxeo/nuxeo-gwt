@@ -23,8 +23,6 @@
 
   <modules>
     <module>nuxeo-gwt-server</module>
-    <module>nuxeo-gwt-runtime</module>
-    <module>nuxeo-gwt-ui</module>
   </modules>
 
   <dependencyManagement>
@@ -61,42 +59,24 @@
 
   <profiles>
     <profile>
-      <id>gwt-dev-windows</id>
-      <properties>
-        <platform>windows</platform>
-      </properties>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-        <os>
-          <family>windows</family>
-        </os>
-      </activation>
-    </profile>
-    <profile>
-      <id>gwt-dev-mac</id>
-      <properties>
-        <platform>mac</platform>
-      </properties>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-        <os>
-          <family>mac</family>
-        </os>
-      </activation>
-    </profile>
-    <profile>
-      <id>gwt-dev-linux</id>
-      <properties>
-        <platform>linux</platform>
-      </properties>
+      <id>gwt</id>
       <activation>
         <activeByDefault>true</activeByDefault>
-        <os>
-          <name>linux</name>
-        </os>
+      </activation>
+  <modules>
+    <module>nuxeo-gwt-runtime</module>
+    <module>nuxeo-gwt-ui</module>
+  </modules>
+    </profile>
+    <profile>
+      <id>nogwt</id>
+      <activation>
+        <property>
+          <name>nogwt</name>
+        </property>
       </activation>
     </profile>
-  </profiles>
+  </profiles> 
 
   <scm>
     <connection>scm:hg:http://hg.nuxeo.org/nuxeo/nuxeo-gwt</connection>
