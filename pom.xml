@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.nuxeo</groupId>
     <artifactId>nuxeo-ecm</artifactId>
-    <version>5.3.1-SNAPSHOT</version>
+    <version>5.3.1-20091201</version>
   </parent>
 
   <groupId>org.nuxeo.ecm.gwt</groupId>
@@ -15,10 +15,10 @@
   <description>Nuxeo GWT: Parent.</description>
 
   <properties>
-    <nuxeo.core.version>1.6.1-SNAPSHOT</nuxeo.core.version>
-    <nuxeo.gwt.version>5.3.1-SNAPSHOT</nuxeo.gwt.version>
-    <nuxeo.webengine.version>5.3.1-SNAPSHOT</nuxeo.webengine.version>
-    <nuxeo.services.version>5.3.1-SNAPSHOT</nuxeo.services.version>
+    <nuxeo.core.version>1.6.1-20091201</nuxeo.core.version>
+    <nuxeo.gwt.version>5.3.1-20091201</nuxeo.gwt.version>
+    <nuxeo.webengine.version>5.3.1-20091201</nuxeo.webengine.version>
+    <nuxeo.services.version>5.3.1-20091201</nuxeo.services.version>
   </properties>
 
   <modules>
