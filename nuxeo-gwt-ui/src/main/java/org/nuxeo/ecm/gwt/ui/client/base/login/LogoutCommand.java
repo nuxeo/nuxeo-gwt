@@ -19,6 +19,7 @@
 
 package org.nuxeo.ecm.gwt.ui.client.base.login;
 
+import com.google.gwt.core.client.GWT;
 import org.nuxeo.ecm.gwt.runtime.client.http.HttpResponse;
 import org.nuxeo.ecm.gwt.runtime.client.http.ServerException;
 import org.nuxeo.ecm.gwt.runtime.client.ui.HttpCommand;
@@ -37,7 +38,7 @@ public class LogoutCommand extends HttpCommand {
 
     @Override
     protected void doExecute() throws Throwable {
-        post("/login/").send();
+        post(GWT.getHostPageBaseURL() + "/@@login").send();
         Cookies.removeCookie("JSESSIONID");
     }
 
