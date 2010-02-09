@@ -19,6 +19,7 @@
 
 package org.nuxeo.ecm.gwt.ui.client.base.login;
 
+import com.google.gwt.core.client.GWT;
 import org.nuxeo.ecm.gwt.runtime.client.http.HttpResponse;
 import org.nuxeo.ecm.gwt.runtime.client.ui.HttpCommand;
 import org.nuxeo.ecm.gwt.runtime.client.ui.View;
@@ -46,7 +47,7 @@ public class LoginCommand extends HttpCommand {
 
     @Override
     protected void doExecute() throws Throwable {
-        post("/login/")
+        post(GWT.getHostPageBaseURL() + "/@@login")
             .setHeader("Content-Type", "application/x-www-form-urlencoded")
             .setRequestData("caller=login&username="+username+"&password="+password)
             .send();
