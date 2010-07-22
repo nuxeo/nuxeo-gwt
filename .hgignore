@@ -10,3 +10,6 @@ target
 *.iml
 *.iws
 .DS_Store
+*.bak
+nuxeo*/META-INF
+nuxeo*/OSGI-INF
