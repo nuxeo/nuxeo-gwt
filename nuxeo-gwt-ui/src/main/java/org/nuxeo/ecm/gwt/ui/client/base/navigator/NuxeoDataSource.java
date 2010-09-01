@@ -56,7 +56,7 @@ public class NuxeoDataSource extends RestDataSource {
             dlg.show();
         } else {
             String[] errors = response.getAttributeAsStringArray("data");
-            if (errors!= null && errors.length > 0) {
+            if (errors != null && errors.length > 0) {
                 String msg = "";
                 for (String error : errors) {
                     msg = error + "\r\n";

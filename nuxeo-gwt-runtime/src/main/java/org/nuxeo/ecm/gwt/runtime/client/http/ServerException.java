@@ -22,10 +22,9 @@ package org.nuxeo.ecm.gwt.runtime.client.http;
 import com.google.gwt.http.client.Response;
 
 /**
- * When a remote call returns an error HTTP code
+ * When a remote call returns an error HTTP code.
  *
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class ServerException extends Exception {
 
@@ -34,22 +33,24 @@ public class ServerException extends Exception {
     protected Response response;
 
     public ServerException(Response response) {
-        super(response.getStatusCode()+" "+response.getStatusText());
+        super(response.getStatusCode() + " " + response.getStatusText());
         this.response = response;
     }
 
     /**
-     * Get the status code of the server response
+     * Gets the status code of the server response.
      */
     public int getStatusCode() {
         return response.getStatusCode();
     }
 
     /**
-     * Get the server response
+     * Gets the server response.
+     *
      * @return the response.
      */
     public Response getResponse() {
         return response;
     }
+
 }

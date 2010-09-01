@@ -40,11 +40,8 @@ import com.google.gwt.core.ext.typeinfo.JType;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class BundleGenerationTask extends GenerationTask {
-
-
 
     @Override
     public void run() throws UnableToCompleteException {
@@ -149,7 +146,6 @@ public class BundleGenerationTask extends GenerationTask {
         writer.outdent();
         writer.println("}");
     }
-
 
     private void writeInstanceDecls(Set<JMethod> instances) {
         for (JMethod m : instances) {

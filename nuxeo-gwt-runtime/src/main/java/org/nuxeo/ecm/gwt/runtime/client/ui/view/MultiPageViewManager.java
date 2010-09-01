@@ -24,14 +24,11 @@ import java.util.Iterator;
 import org.nuxeo.ecm.gwt.runtime.client.ui.Container;
 import org.nuxeo.ecm.gwt.runtime.client.ui.View;
 
-
-
 /**
- *
- * A view manager that can be used to build multi-page views (that are usually using tabs).
+ * A view manager that can be used to build multi-page views (that are usually
+ * using tabs).
  *
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class MultiPageViewManager extends DefaultViewManager {
 
@@ -43,9 +40,9 @@ public class MultiPageViewManager extends DefaultViewManager {
     }
 
     /**
-     * Refresh tabs to display the given input
-     * @param input
+     * Refreshes tabs to display the given input.
      */
+    @Override
     public void open(Object input) {
         //container.clear(); // tabs impl dont know to hide tabs - we must reset them .. TODO
         super.open(input);
@@ -53,7 +50,7 @@ public class MultiPageViewManager extends DefaultViewManager {
 
     @Override
     public void addView(String key, View view) {
-        ViewPageSite site = (ViewPageSite)getViewSite(key);
+        ViewPageSite site = (ViewPageSite) getViewSite(key);
         if (site == null) {
             site = new ViewPageSite(key, view);
             sites.add(site);
@@ -66,7 +63,7 @@ public class MultiPageViewManager extends DefaultViewManager {
     public void removeView(View view) {
         Iterator<ViewSite> it = sites.iterator();
         while (it.hasNext()) {
-            ViewPageSite s = (ViewPageSite)it.next();
+            ViewPageSite s = (ViewPageSite) it.next();
             if (view == s.getView()) {
                 if (s.isEmpty()) {
                     it.remove();

@@ -38,14 +38,12 @@ import com.smartgwt.client.widgets.tree.TreeNode;
 /**
  * This class is there to fix any problem found in smartgwt like
  * unexposed JS API or real bugs. Ideally this class should not exist.
- *
- * See also NuxeoDataSource
+ * <p>
+ * See also {@see NuxeoDataSource}.
  *
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class SmartClient implements EntryPoint {
-
 
     /**
      * This is the entry point method.
@@ -57,22 +55,20 @@ public class SmartClient implements EntryPoint {
 
     public static Canvas toCanvas(Widget widget) {
         if (widget instanceof Canvas) {
-            return (Canvas)widget;
+            return (Canvas) widget;
         } else {
             return new SmartWidget(widget);
         }
     }
 
-
     public static void install() {
         fixCursorTrackerPath();
     }
 
-
     /**
-     * The cursor tracker path is not correctly initialized by ISC - because of the JS load order
-     * which is first loading RPCManager class and then the loadSkin JS.
-     *
+     * The cursor tracker path is not correctly initialized by ISC - because of
+     * the JS load order which is first loading RPCManager class and then the
+     * loadSkin JS.
      */
     public native static void fixCursorTrackerPath()/*-{
     $wnd.isc.RPC.cursorTrackerDefaults.src=$wnd.isc.Page.getSkinDir()+"/images/shared/progressCursorTracker.png";
@@ -94,24 +90,21 @@ public class SmartClient implements EntryPoint {
         return null;
     }-*/;
 
-
-
-
     public static void unloadChildren(Tree tree, TreeNode node) {
         unloadChildren(tree, node.getJsObj());
     }
 
-    public native static void unloadChildren(Tree tree, JavaScriptObject node) /*-{
+    public static native void unloadChildren(Tree tree, JavaScriptObject node) /*-{
     var theTree= tree.@com.smartgwt.client.core.BaseClass::getOrCreateJsObj()();
     theTree.unloadChildren(node);
     }-*/;
 
     /**
-     * TODO workaround for a smartgwt bug
      * Hack to get the tab id - event.getTab() is not working - throws a ClassCastExcpetion
      * @param event
      * @return
      */
+    // TODO workaround for a smartgwt bug
     public static native String getTabId(TabCloseClickEvent event) /*-{
         var jsObj = event.@com.smartgwt.client.event.AbstractSmartEvent::jsObj;
         return jsObj.tab.ID;
@@ -119,12 +112,12 @@ public class SmartClient implements EntryPoint {
 
 
     /**
-     * TODO workaround for a smartgwt bug
      * Hack to set the icon - this method is missing from the API
      * @param tabs
      * @param tab
      * @param icon
      */
+    // TODO workaround for a smartgwt bug
     public static native void setTabIcon(TabSet tabs, Tab tab, String icon) /*-{
         var self = tabs.@com.smartgwt.client.widgets.BaseWidget::getOrCreateJsObj()();
         var tabJS = tab.@com.smartgwt.client.widgets.tab.Tab::getJsObj()();
@@ -141,7 +134,6 @@ public class SmartClient implements EntryPoint {
         var tabJS = tab.@com.smartgwt.client.widgets.tab.Tab::getJsObj()();
         self.setTabTitle(tabJS, title);
     }-*/;
-
 
     public static native void setSectionTitle(SectionStack stack, String id, String title) /*-{
     var self = stack.@com.smartgwt.client.widgets.BaseWidget::getOrCreateJsObj()();

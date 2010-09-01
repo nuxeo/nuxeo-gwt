@@ -26,31 +26,33 @@ import java.lang.annotation.Target;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Bundle {
 
     /**
-     * A list of bundles to extend. The order is important.
-     * Bundles will be processed in the order they appear in this array after processing first the current bundle.
-     * This means for a bundle declaration:
+     * A list of bundles to extend. The order is important. Bundles will be
+     * processed in the order they appear in this array after processing first
+     * the current bundle. This means for a bundle declaration:
+     *
      * <pre>
      * @Bundle(B1.class, B2.class)
      * public interface B0 {
      * ...
      * </pre>
-     * the processing order is B0, B1, B2.
      *
+     * the processing order is B0, B1, B2.
+     * <p>
      * The default value is an empty list when no bundles are extended.
+     *
      * @return
      */
-    Class<?>[] value() default {};
+    Class<?>[] value() default {
+    };
 
     /**
-     * The XML descriptor file for the extensions
-     * @return
+     * The XML descriptor file for the extensions.
      */
     String descriptor() default "";
 

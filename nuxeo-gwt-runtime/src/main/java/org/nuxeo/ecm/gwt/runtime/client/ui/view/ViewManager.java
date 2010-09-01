@@ -24,99 +24,95 @@ import org.nuxeo.ecm.gwt.runtime.client.ui.View;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public interface ViewManager {
 
     /**
-     * Set the site manager to be used by this view manager
-     * @param mgr
+     * Sets the site manager to be used by this view manager.
      */
     void setContainer(Container mgr);
 
     /**
-     * The site manager used by this view
+     * The site manager used by this view.
+     *
      * @return the site manager
      */
     Container getContainer();
 
     /**
-     * Open the given view. The managed views are refreshed depending on the input so that
-     * you may expect that some views becomes hidden or restored after an open operation
-     * @param input may be null
+     * Opens the given view. The managed views are refreshed depending on the input so that
+     * you may expect that some views becomes hidden or restored after an open operation.
+     *
+     * @param input (may be null)
      */
     void open(Object input);
 
     /**
-     * Show a view given its registration ID.
-     * If view is already visible do nothing
-     * @param id
+     * Shows a view given its registration ID.
+     * If view is already visible, do nothing.
      */
     void showView(String id);
 
     /**
-     * Hide a view given its registration ID.
-     * If view is already hidden do nothing.
+     * Hides a view given its registration ID.
+     * If view is already hidden, do nothing.
      * This method may not apply for deck style containers (e.g. multi-page views) which are showing only one view
      * at a time. In this case calling showView() on another view will hide the active view.
-     * For other container type it does nothing
-     * @param id
+     * For other container types, it does nothing.
      */
     void hideView(String id);
 
     /**
-     * Activate a view given its ID. This will make visible the view content
-     * (similar to expand for stack views or select for deck views)
-     * @param id
+     * Activates a view given its ID. This will make visible the view content
+     * (similar to expand for stack views or select for deck views).
      */
     void activateView(String id);
 
     /**
-     * Deactivate a view given its ID, This will hide the content of the view
-     * (similar to collapse for stack views or deselect for deck views)
-     * @param id
+     * Deactivates a view given its ID. This will hide the content of the view
+     * (similar to collapse for stack views or deselect for deck views).
      */
     void deactivateView(String id);
 
     /**
-     * Get the current view.
-     * This method applies only for deck style containers (e.g. that are showing only one view at a time).
-     *  For other container type it does nothing.
+     * Gets the current view. This method applies only for deck style containers
+     * (e.g. that are showing only one view at a time). For other container type
+     * it does nothing.
+     *
      * @return the active view or null if none.
      */
     View getActiveView();
 
     /**
-     * Register a view under an id
+     * Registers a view under an id.
+     *
      * @param id the view id
      * @param view the view to register
      */
     void addView(String id, View view);
 
     /**
-     * Remove a registered view.
-     * @param id the id of the view to remove
+     * Removes a registered view.
+     *
+     * @param view the view to remove
      */
     void removeView(View view);
 
     /**
-     * Get all registered views.
+     * Gets all registered views.
+     *
      * @return all registered views or an empty array if none.
      */
     View[] getViews();
 
     /**
-     * Get the number of the view in that manager
-     * @return
+     * Gets the number of the view in that manager.
      */
     int getViewsCount();
 
     /**
-     * Get a view given its registration ID.
-     * @param id
-     * @return
+     * Gets a view given its registration ID.
      */
     View getView(String id);
-
 
 }

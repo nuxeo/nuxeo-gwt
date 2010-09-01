@@ -101,8 +101,7 @@ public class DefaultEditorManager implements EditorManager, Extensible, SiteEven
 
     /**
      * Must be called by the implementation when closing a tab through mouse click or through API.
-     * to free up the associated editor view
-     * @param id
+     * To free up the associated editor view.
      */
     protected void siteClosed(Object handle) {
         Iterator<EditorSite> it = sites.iterator();

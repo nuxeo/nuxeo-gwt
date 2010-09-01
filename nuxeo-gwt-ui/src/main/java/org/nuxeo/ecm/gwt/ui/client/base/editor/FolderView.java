@@ -44,14 +44,13 @@ import com.smartgwt.client.widgets.toolbar.ToolStrip;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class FolderView extends SmartView implements CellDoubleClickHandler {
 
     protected ListGrid grid;
 
     public FolderView() {
-        super ("view");
+        super("view");
     }
 
     @Override
@@ -60,14 +59,13 @@ public class FolderView extends SmartView implements CellDoubleClickHandler {
         grid = null;
     }
 
-
     public Document getDocument() {
-        return (Document)input;
+        return (Document) input;
     }
 
     @Override
     public boolean acceptInput(Object input) {
-        return ((Document)input).isFolder();
+        return ((Document) input).isFolder();
     }
 
     @Override
@@ -85,7 +83,7 @@ public class FolderView extends SmartView implements CellDoubleClickHandler {
         ListGridField fIcon = new ListGridField("type", "&nbsp;");
         fIcon.setWidth(20);
         fIcon.setType(ListGridFieldType.IMAGE);
-        fIcon.setImageURLPrefix(Framework.getSkinPath()+"/images/types/");
+        fIcon.setImageURLPrefix(Framework.getSkinPath() + "/images/types/");
         fIcon.setImageURLSuffix(".gif");
         ListGridField fTitle = new ListGridField("title", "Title");
         fTitle.setType(ListGridFieldType.TEXT);
@@ -166,6 +164,5 @@ public class FolderView extends SmartView implements CellDoubleClickHandler {
             }
         }.execute();
     }
-
 
 }

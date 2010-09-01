@@ -19,11 +19,10 @@
 
 package org.nuxeo.ecm.gwt.runtime.client.ui;
 
-
 /**
- * Used to bridge view managers with underlying widget implementation
- * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
+ * Used to bridge view managers with underlying widget implementation.
  *
+ * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
  */
 public interface Container extends Drawable {
 
@@ -37,9 +36,9 @@ public interface Container extends Drawable {
     void activateSite(Site site);
     void deactivateSite(Site site);
     Object getActiveSiteHandle();
+
     /**
-     * Update the title and icon and show the site if not yet visible
-     * @param site
+     * Updates the title and icon and show the site if not yet visible.
      */
     void updateSiteTitle(Site site);
     void updateSiteIcon(Site site);

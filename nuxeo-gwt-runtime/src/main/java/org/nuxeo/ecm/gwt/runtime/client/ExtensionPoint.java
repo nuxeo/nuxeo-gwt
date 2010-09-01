@@ -26,15 +26,13 @@ import java.lang.annotation.Target;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExtensionPoint {
 
     /**
-     * The name of the exposed extension points
-     * @return
+     * The name of the exposed extension points.
      */
     String[] value() default {};
 

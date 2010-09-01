@@ -58,7 +58,7 @@ public class DocumentMetadataView extends SmartView implements DSCallback {
     }
 
     public Document getDocument() {
-        return (Document)input;
+        return (Document) input;
     }
 
     @Override
@@ -72,12 +72,10 @@ public class DocumentMetadataView extends SmartView implements DSCallback {
         return true;
     }
 
-
     @Override
     protected void inputChanged() {
         refresh();
     }
-
 
     @Override
     public String getTitle() {

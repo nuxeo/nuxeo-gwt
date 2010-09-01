@@ -26,15 +26,13 @@ import java.util.List;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
-public class Context extends HashMap<String,Object> {
+public class Context extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
     protected Object input;
     protected static List<ContextListener> contextListeners = new ArrayList<ContextListener>();
-
 
     public Object getInputObject() {
         return input;
@@ -51,12 +49,11 @@ public class Context extends HashMap<String,Object> {
     }
 
     @Override
-    public Object put(String key, Object o ) {
+    public Object put(String key, Object o) {
         Object obj = super.put(key, o);
         fireEvent(new ContextEvent(ContextEvent.PROP, key));
         return obj;
     }
-
 
     public static void fireEvent(ContextEvent event) {
         for (ContextListener listener : contextListeners) {

@@ -38,15 +38,12 @@ import com.smartgwt.client.widgets.layout.VStack;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class AdministrationView extends SmartView {
-
 
     public AdministrationView() {
         super("admin");
     }
-
 
     @Override
     public String getTitle() {
@@ -59,7 +56,7 @@ public class AdministrationView extends SmartView {
         VStack stack = new VStack();
 //        ImgButton btn = new ImgButton();
 //        btn.setTitle("Create");
-        Anchor a= new Anchor("Create");
+        Anchor a = new Anchor("Create");
         a.setHref("#");
         a.addClickListener(new ClickListener() {
             public void onClick(Widget sender) {
@@ -75,20 +72,20 @@ public class AdministrationView extends SmartView {
         });
         SmartWidget wc = new SmartWidget(a);
         stack.addMember(wc);
-        HTMLFlow aa= new HTMLFlow("<a href=\"#www\">Delete</a>");
+        HTMLFlow aa = new HTMLFlow("<a href=\"#www\">Delete</a>");
         stack.addMember(aa);
-        Button b= new Button("Create");
+        Button b = new Button("Create");
         b.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 //UI.openInEditor(new Url("http://google.com"));
-                Map<String,String> map = Framework.getRepositoryRoots();
+                Map<String, String> map = Framework.getRepositoryRoots();
                 for (String key : map.keySet()) {
                     System.out.println("*** "+key+" : "+map.get(key));
                 }
             }
         });
         stack.addMember(b);
-        b= new Button("Delete");
+        b = new Button("Delete");
         b.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 UI.openInEditor("<b>Hello!</b> some text: "+System.currentTimeMillis());

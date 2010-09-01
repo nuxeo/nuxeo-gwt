@@ -21,12 +21,11 @@ package org.nuxeo.ecm.gwt.runtime.client.model;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class ContextEvent {
 
-    public final static int INPUT = 2;
-    public final static int PROP = 3;
+    public static final int INPUT = 2;
+    public static final int PROP = 3;
 
     public int type;
 
@@ -34,9 +33,8 @@ public class ContextEvent {
 
     public Object source;
 
-
     public ContextEvent(int type) {
-        this (type, null);
+        this(type, null);
     }
 
     public ContextEvent(int type, Object data) {

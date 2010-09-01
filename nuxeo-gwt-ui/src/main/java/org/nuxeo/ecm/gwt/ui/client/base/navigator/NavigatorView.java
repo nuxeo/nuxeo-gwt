@@ -63,10 +63,10 @@ public class NavigatorView extends SmartView implements ControlContainer {
         tree.setWidth100();
         tree.setAnimateFolders(Boolean.parseBoolean(Framework.getSetting("animations", "false")));
         tree.setDataSource(TreeDS.getInstance());
-        Map<String,String> repoRoots = Framework.getRepositoryRoots();
+        Map<String, String> repoRoots = Framework.getRepositoryRoots();
         roots = new TreeNode[repoRoots.size()];
         int i = 0;
-        for (Map.Entry<String,String> entry : repoRoots.entrySet()) {
+        for (Map.Entry<String, String> entry : repoRoots.entrySet()) {
             TreeNode root = new TreeNode();
             String id = entry.getKey();
             String val = entry.getValue();

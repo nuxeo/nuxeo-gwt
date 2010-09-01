@@ -28,48 +28,49 @@ public class Document extends JSONWrapper implements DocumentConstants {
         super(object);
     }
 
-    public JSONValue getProperty(String schema, String property){
+    public JSONValue getProperty(String schema, String property) {
         JSONValue o1 = json.get(schema);
-        if ( o1 != null && o1.isObject() != null ){
+        if (o1 != null && o1.isObject() != null) {
             JSONValue o2 = o1.isObject().get(property);
             return o2;
         }
         return null;
     }
 
-    public String getStringProperty(String schema, String property ){
+    public String getStringProperty(String schema, String property) {
         JSONValue v = getProperty(schema, property);
-        if ( v != null && v.isString() != null){
+        if (v != null && v.isString() != null) {
             return v.isString().stringValue();
         }
         return null;
     }
 
-    public String getDateProperty(String schema, String property ){
+    public String getDateProperty(String schema, String property) {
         JSONValue v = getProperty(schema, property);
-        if ( v != null && v.isObject() != null){
+        if (v != null && v.isObject() != null) {
             JSONObject o = v.isObject();
             JSONValue time = o.get("timeInMillis");
-            if ( time != null && time.isNumber()!= null) {
-                Date date = new Date((long)time.isNumber().doubleValue());
+            if (time != null && time.isNumber() != null) {
+                Date date = new Date((long) time.isNumber().doubleValue());
                 return date.toString();
             }
         }
         return null;
     }
 
-
-    public boolean getBooleanProperty(String schema, String property, boolean defaultValue){
+    public boolean getBooleanProperty(String schema, String property,
+            boolean defaultValue) {
         JSONValue v = getProperty(schema, property);
-        if ( v != null && v.isString() != null){
+        if (v != null && v.isString() != null) {
             return v.isBoolean().booleanValue();
         }
         return defaultValue;
     }
 
-    public double getNumberProperty(String schema, String property, double defaultValue ){
+    public double getNumberProperty(String schema, String property,
+            double defaultValue) {
         JSONValue v = getProperty(schema, property);
-        if ( v != null && v.isString() != null){
+        if (v != null && v.isString() != null) {
             return v.isNumber().doubleValue();
         }
         return defaultValue;
@@ -87,7 +88,7 @@ public class Document extends JSONWrapper implements DocumentConstants {
         return getStringProperty("dublincore", "description");
     }
 
-    public String getType(){
+    public String getType() {
         return getString(KEY_TYPE);
     }
 

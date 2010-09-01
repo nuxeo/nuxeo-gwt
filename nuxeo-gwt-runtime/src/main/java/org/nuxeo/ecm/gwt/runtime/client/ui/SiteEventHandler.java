@@ -21,12 +21,11 @@ package org.nuxeo.ecm.gwt.runtime.client.ui;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public interface SiteEventHandler {
 
-    final static int SITE_CLOSED = 1;
-    final static int SITE_ACTIVATED = 2;
+    int SITE_CLOSED = 1;
+    int SITE_ACTIVATED = 2;
 
     void handleSiteEvent(Object handle, int event);
 

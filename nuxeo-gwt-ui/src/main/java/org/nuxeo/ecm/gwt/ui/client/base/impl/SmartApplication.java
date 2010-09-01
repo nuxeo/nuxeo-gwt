@@ -82,21 +82,25 @@ public class SmartApplication implements UIApplication, Extensible, ExtensionPoi
         }
         if (content != null) {
             String width = right == null ? "75%" : "50%";
-            Canvas canvas = SmartClient.toCanvas(((Drawable)content).getWidget());
+            Canvas canvas = SmartClient.toCanvas(((Drawable) content).getWidget());
             canvas.setSize(width, "100%");
             main.addMember(canvas);
         }
         if (right != null) {
-            Canvas canvas = SmartClient.toCanvas(((Drawable)right).getWidget());
+            Canvas canvas = SmartClient.toCanvas(((Drawable) right).getWidget());
             canvas.setSize("25%", "100%");
             canvas.setShowResizeBar(true);
             main.addMember(canvas);
         }
         int size = 100;
-        if (header != null) size -= 4;
-        if (footer != null) size -= 4;
+        if (header != null) {
+            size -= 4;
+        }
+        if (footer != null) {
+            size -= 4;
+        }
         main.setHeight("100%");
-//main.setBorder("1px solid red");
+        //main.setBorder("1px solid red");
         layout.addMember(main);
         if (footer != null) {
             Canvas canvas = SmartClient.toCanvas(footer.getWidget());
@@ -128,8 +132,6 @@ public class SmartApplication implements UIApplication, Extensible, ExtensionPoi
         return footer;
     }
 
-
-
     public View getView(String[] segments) {
         return getView(segments, segments.length);
     }
@@ -145,7 +147,6 @@ public class SmartApplication implements UIApplication, Extensible, ExtensionPoi
         }
         return getView(segments);
     }
-
 
     public void showView(String id) {
 //        if (left != null) {
@@ -183,23 +184,21 @@ public class SmartApplication implements UIApplication, Extensible, ExtensionPoi
     }
 
     public void registerExtension(String target, Object extension) {
-        if (LEFT_AREA_XP.equals(target) ) {
-            left = (View)extension;
+        if (LEFT_AREA_XP.equals(target)) {
+            left = (View) extension;
         } else if (CONTENT_AREA_XP.equals(target)) {
-            content = (EditorManager)extension;
+            content = (EditorManager) extension;
         } else if (RIGHT_AREA_XP.equals(target)) {
-            right = (ViewManager)extension;
+            right = (ViewManager) extension;
         } else if (HEADER_AREA_XP.equals(target)) {
-            header = (View)extension;
+            header = (View) extension;
         } else if (FOOTER_AREA_XP.equals(target)) {
-            footer = (View)extension;
+            footer = (View) extension;
         }
     }
-
 
     public void handleError(Throwable t) {
         UI.showError(t);
     }
-
 
 }

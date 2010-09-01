@@ -46,15 +46,16 @@ public class ViewStack extends SmartView implements Extensible {
         mgr.open(input);
     }
 
+    @Override
     public SectionStack createWidget() {
         setInput(null); // force sections creation
-        return ((StackContainer)mgr.getContainer()).getWidget();
+        return ((StackContainer) mgr.getContainer()).getWidget();
     }
 
     public void registerExtension(String target, Object extension) {
         if (ExtensionPoints.VIEWS_XP.equals(target)) {
             try {
-                View v = (View)extension;
+                View v = (View) extension;
                 mgr.addView(v.getName(), v);
             } catch (ClassCastException e) {
                 GWT.log("Invalid contribution to extension point: "+ExtensionPoints.VIEWS_XP, e);

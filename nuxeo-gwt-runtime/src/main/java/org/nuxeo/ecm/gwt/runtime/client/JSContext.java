@@ -25,18 +25,16 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * A Java overlay type over a JS native type.
- *
+ * <p>
  * This native type is the one used to propagate configuration and events from JS code to java code.
  *
- *
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class JSContext extends JavaScriptObject {
 
     private static JSContext current = createContext();
 
-    private native static JSContext createContext()/*-{
+    private static native JSContext createContext()/*-{
     if ($wnd.nx === undefined) {
         $wnd.nx = {};
     }

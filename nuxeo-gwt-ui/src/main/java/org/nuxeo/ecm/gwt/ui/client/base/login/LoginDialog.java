@@ -37,11 +37,10 @@ import com.smartgwt.client.widgets.form.validator.Validator;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class LoginDialog extends Window {
 
- // used to avoid open twice the login dialog - this may happend when dbl clicking in the tree
+ // used to avoid open twice the login dialog - this may happen when dbl clicking in the tree
  // nav without having rights (because of the list nav)
     protected boolean isRunning = false;
     protected TextItem userName;
@@ -55,7 +54,7 @@ public class LoginDialog extends Window {
     }
 
     public LoginDialog(String header) {
-        super ();
+        super();
         this.header = header;
         setAnimateMinimize(true);
         setWidth(300);
@@ -69,7 +68,7 @@ public class LoginDialog extends Window {
 
     @Override
     public void show() {
-        if(isRunning) {
+        if (isRunning) {
             return;
         }
         isRunning = true;
@@ -77,9 +76,6 @@ public class LoginDialog extends Window {
         System.out.println(getZIndex());
     }
 
-    /**
-     * @return the isRunning.
-     */
     public boolean isRunning() {
         return isRunning;
     }
@@ -89,8 +85,8 @@ public class LoginDialog extends Window {
         form.setAutoFocus(true);
         form.setNumCols(2);
 
-        HeaderItem hItem =new HeaderItem("header");
-        hItem.setValue("<h3>"+header+"</h3>");
+        HeaderItem hItem = new HeaderItem("header");
+        hItem.setValue("<h3>" + header + "</h3>");
         hItem.setAlign(Alignment.CENTER);
 
         userName = new TextItem("username");

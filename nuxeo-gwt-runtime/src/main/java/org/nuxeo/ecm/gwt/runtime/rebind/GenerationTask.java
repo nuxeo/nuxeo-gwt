@@ -46,7 +46,8 @@ public abstract class GenerationTask {
     public GenerationTask() {
     }
 
-    public String generate(TreeLogger logger, GeneratorContext context, String typeName) throws UnableToCompleteException {
+    public String generate(TreeLogger logger, GeneratorContext context,
+            String typeName) throws UnableToCompleteException {
         this.logger = logger;
         this.context = context;
         this.typeName = typeName;

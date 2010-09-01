@@ -44,7 +44,6 @@ import org.nuxeo.ecm.gwt.ui.client.base.search.SearchEditor;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 @Bundle(DefaultBundle.class)
 public interface SmartBundle extends ApplicationBundle {

@@ -37,24 +37,17 @@ import com.google.gwt.user.client.ui.TreeListener;
 
 /**
  * @author eugen
- *
  */
 public class NavigatorTree extends Tree{
 
-
-    /**
-     * @param rootPath - the url of the repository
-     * @param navigationRootPath - the document path of the root navigator
-     */
     public NavigatorTree() {
-        super();
         addTreeListener(new NavigatorTreeListener());
     }
 
     @Override
     protected void onAttach() {
         super.onAttach();
-        updateTree((TreeItem)null);
+        updateTree((TreeItem) null);
     }
 
     public NavigatorTree(TreeImages images, boolean useLeafImages) {
@@ -65,99 +58,92 @@ public class NavigatorTree extends Tree{
         super(images);
     }
 
-
-    public DocumentRef getSelected(){
+    public DocumentRef getSelected() {
         TreeItem item = getSelectedItem();
-        if ( item != null ){
+        if (item != null) {
             return getDocRef(item);
         }
         return null;
     }
 
-    public DocumentRef getDocRef(TreeItem item){
+    public DocumentRef getDocRef(TreeItem item) {
         return (DocumentRef) item.getUserObject();
     }
 
-
-
-
     // TODO add a method that will select a specified node
-    protected TreeItem createNode(DocumentRef obj){
+    protected TreeItem createNode(DocumentRef obj) {
         TreeItem node = new TreeItem();
         node.setUserObject(obj);
         String title = obj.title;
         node.setText(title);
-        if( obj.isFolder ){
-            TreeItem fake = new TreeItem("Loading ...");
+        if (obj.isFolder) {
+            TreeItem fake = new TreeItem("Loading...");
             node.addItem(fake);
         }
         return node;
-
     }
 
-    void updateTree(JSONArray array){
-        for ( int i = 0, len = array.size() ; i < len ; i++){
+    void updateTree(JSONArray array) {
+        for (int i = 0, len = array.size(); i < len; i++) {
             JSONObject obj = array.get(i).isObject();
-            if( obj != null ) {
+            if (obj != null) {
                 TreeItem treeItem = createNode(DocumentRef.fromJSON(obj));
-                this.addItem(treeItem);
+                addItem(treeItem);
             }
         }
     }
 
-    void updateTree(JSONArray array, TreeItem treeItem){
+    void updateTree(JSONArray array, TreeItem treeItem) {
         treeItem.removeItems();
-        for ( int i = 0, len = array.size() ; i < len ; i++){
+        for (int i = 0, len = array.size(); i < len; i++) {
             JSONObject obj = array.get(i).isObject();
-            if( obj != null ) {
+            if (obj != null) {
                 TreeItem ti = createNode(DocumentRef.fromJSON(obj));
                 treeItem.addItem(ti);
             }
         }
-
     }
 
-    public void updateTree(final TreeItem item){
+    public void updateTree(final TreeItem item) {
         new GetChildrenCommand(Framework.getResourcePath("/tree"), item).execute();
     }
 
-
-    class NavigatorTreeListener implements TreeListener{
+    class NavigatorTreeListener implements TreeListener {
 
         public void onTreeItemSelected(TreeItem item) {
         }
 
         public void onTreeItemStateChanged(TreeItem item) {
-            if ( item.getState()) {
+            if (item.getState()) {
                 // check if node has been expanded
-                if ( item.getChildCount() == 1 && "Loading ...".equals(item.getChild(0).getText())) {
+                if (item.getChildCount() == 1
+                        && "Loading ...".equals(item.getChild(0).getText())) {
                     DocumentRef obj = (DocumentRef) item.getUserObject();
-                    if ( obj != null ){
+                    if (obj != null) {
                         updateTree(item);
                     }
                 }
             }
         }
-
     }
-
 
     public void refreshSelected() {
         TreeItem ti = getSelectedItem();
         refreshItem(ti);
-    };
+    }
 
     public void refreshItem(TreeItem item) {
         DocumentRef docRef = getDocRef(item);
-        if ( docRef != null ){
+        if (docRef != null) {
             updateTree(item);
         }
-
-    };
+    }
 
     class GetChildrenCommand extends HttpCommand {
+
         protected TreeItem item;
         protected String path;
+
         public GetChildrenCommand(String path, TreeItem item) {
             super (null, 100);
             this.item = item;
@@ -166,10 +152,12 @@ public class NavigatorTree extends Tree{
                 this.path = this.path + "?parentId="+((DocumentRef)item.getUserObject()).id;
             }
         }
+
         @Override
         protected void doExecute() throws Throwable {
             get(path).send();
         }
+
         @Override
         public void onSuccess(HttpResponse response) {
             // parse the response text into JSON
@@ -183,7 +171,7 @@ public class NavigatorTree extends Tree{
             }
             JSONArray jsonArray = resp.get("data").isArray();
             if (jsonArray != null) {
-                if ( item == null ){
+                if (item == null) {
                     updateTree(jsonArray);
                 } else {
                     updateTree(jsonArray, item);
@@ -209,6 +197,5 @@ public class NavigatorTree extends Tree{
             }
         }
     }
-
 
 }

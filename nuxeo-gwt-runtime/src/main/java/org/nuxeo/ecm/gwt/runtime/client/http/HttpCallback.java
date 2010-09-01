@@ -27,7 +27,6 @@ import com.google.gwt.http.client.Response;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public abstract class HttpCallback implements RequestCallback {
 

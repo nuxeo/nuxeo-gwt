@@ -23,7 +23,6 @@ import org.nuxeo.ecm.gwt.runtime.client.model.DocumentHistoryListener;
 
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 @Bundle
 public interface DefaultBundle extends ApplicationBundle {

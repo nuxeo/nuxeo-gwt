@@ -19,7 +19,6 @@
 
 package org.nuxeo.ecm.gwt.runtime.client;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,10 +31,8 @@ import com.google.gwt.user.client.HistoryListener;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
-
 /**
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
- *
  */
 public class Framework {
 
@@ -50,11 +47,9 @@ public class Framework {
     protected static boolean isStarted = false;
     protected static Map<String, JSHandler> jsHandlers = new HashMap<String, JSHandler>();
 
-
     public static Application getApplication() {
         return application;
     }
-
 
     public static void setErrorHandler(ErrorHandler errorHandler) {
         Framework.errorHandler = errorHandler;
@@ -64,7 +59,6 @@ public class Framework {
         return errorHandler;
     }
 
-
     public static void handleError(Throwable t) {
         GWT.log(t.getMessage(), t);
         if (!GWT.isScript()) {
@@ -73,7 +67,7 @@ public class Framework {
         if (errorHandler != null) {
             errorHandler.handleError(t);
         } else {
-            Window.alert("Uncaught Ecxception: "+t.getMessage());
+            Window.alert("Uncaught Ecxception: " + t.getMessage());
         }
     }
 
@@ -92,9 +86,9 @@ public class Framework {
         if (xp != null) {
             xp.registerExtension(extensionPoint, extension);
         } else if (APPLICATION_XP.equals(extensionPoint)) {
-            application =  (Application)extension;
+            application =  (Application) extension;
         } else if (HISTORY_LISTENER_XP.equals(extensionPoint)) {
-            History.addHistoryListener((HistoryListener)extension);
+            History.addHistoryListener((HistoryListener) extension);
         } else if (JS_HANDLER_XP.equals(extensionPoint)) {
             //TODO registerJSHandler(, handler)((JSHandler)extension);
         } else {
@@ -104,7 +98,7 @@ public class Framework {
                 waitingExtensions.put(extensionPoint, list);
             }
             list.add(extension);
-            GWT.log("Postpone extension registration for: "+extensionPoint, null);
+            GWT.log("Postpone extension registration for: " + extensionPoint, null);
         }
     }
 
@@ -114,7 +108,7 @@ public class Framework {
             doStart(url);
         } catch (Throwable t) {
             GWT.log(t.getMessage(), t);
-            Window.alert("Error: "+t.getMessage());
+            Window.alert("Error: " + t.getMessage());
         } finally {
             // hide loading message
             showLoading(null);
@@ -139,7 +133,7 @@ public class Framework {
         }
         application.start();
         if (!waitingExtensions.isEmpty()) {//TODO use onAtach in application to clear the map?
-            GWT.log("There are extensions waiting to be deployed - "+waitingExtensions, null);
+            GWT.log("There are extensions waiting to be deployed - " + waitingExtensions, null);
         }
         History.fireCurrentHistoryState();
     }
@@ -147,9 +141,6 @@ public class Framework {
     public static void start() {
         start(null);
     }
-
-
-
 
     public static void registerJSHandler(String id, JSHandler handler) {
         jsHandlers.put(id, handler);
@@ -163,7 +154,7 @@ public class Framework {
     public static Object handleJSEvent(String eventId, String data) {
         JSHandler handler = jsHandlers.get(eventId);
         if (handler == null) {
-            Window.alert("No handlers registered for JS event: "+eventId);
+            Window.alert("No handlers registered for JS event: " + eventId);
             return null;
         } else {
             return handler.onEvent(data);
@@ -176,16 +167,16 @@ public class Framework {
 
     public static String getSkinPath(String path) {
         if (path.startsWith("/")) {
-            return JSContext.getCurrent().getSkinPath()+path;
+            return JSContext.getCurrent().getSkinPath() + path;
         }
-        return JSContext.getCurrent().getSkinPath()+"/"+path;
+        return JSContext.getCurrent().getSkinPath() + "/" + path;
     }
 
     public static String getResourcePath(String path) {
         if (path.startsWith("/")) {
-            return JSContext.getCurrent().getModulePath()+path;
+            return JSContext.getCurrent().getModulePath() + path;
         }
-        return JSContext.getCurrent().getModulePath()+"/"+path;
+        return JSContext.getCurrent().getModulePath() + "/" + path;
     }
 
     public static String getModulePath() {
@@ -232,6 +223,5 @@ public class Framework {
             }
         }
     }
-
 
 }

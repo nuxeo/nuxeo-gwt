@@ -27,15 +27,16 @@ package org.nuxeo.ecm.gwt.runtime.client.ui;
 public interface View extends Drawable {
 
     /**
-     * Install the view into a site and sets is input to the given one.
+     * Installs the view into a site and sets is input to the given one.
      * The view widget will be created at this point after setting the input.
+     *
      * @param site the site to host the view
      * @param input the input object
      */
     void install(Site site, Object input);
 
     /**
-     * Uninstall the view from its site.
+     * Uninstalls the view from its site.
      * All cached data should be removed such as the view widget etc.
      * The view itself should not be destroyed to be able to re-install it later if needed.
      */
@@ -43,70 +44,71 @@ public interface View extends Drawable {
 
     /**
      * Whether or not this view is installed into a site (its widget was created).
+     *
      * @return true if installed, false otherwise.
      */
     boolean isInstalled();
 
     /**
      * Whether or not the view widget was created.
-     * @return
      */
    boolean hasWidget();
 
     /**
-     * Get the view name the view an can be used to find out a view from its container
-     * @return
+     * Gets the view name the view an can be used to find out a view from its container.
      */
     String getName();
 
     /**
-     * Get a title suitable for this view. This is a hint to the site view ad should
+     * Gets a title suitable for this view. This is a hint to the site view ad should
      * reflect the current view input.
+     *
      * @return the title or null if none
      */
     String getTitle();
 
     /**
-     * Get a icon suitable for this view. This is a hint to the view site and should
+     * Gets a icon suitable for this view. This is a hint to the view site and should
      * reflect the current view input.
+     *
      * @return the icon or null if none
      */
     String getIcon();
 
     /**
-     * Refresh this view using current input. This should be called by a setInput after setting the input.
+     * Refreshes this view using current input. This should be called by a setInput after setting the input.
      * Optional operation - if container doesn't supports refresh do nothing
      */
     void refresh();
 
     /**
-     * Show busy state. Called when busy state is required.
+     * Shows busy state. Called when busy state is required.
      */
     void showBusy();
 
     /**
-     * Hide busy state. Called when busy state terminated.
+     * Hides busy state. Called when busy state terminated.
      */
     void hideBusy();
 
     /**
      * Whether or not this view accepts the given input.
      * This is an optional operation and should return false if not supported
-     * @param input
+     *
      * @return true if input can be rendered by the view
      */
     boolean acceptInput(Object input);
 
     /**
-     * Set the input object for the view.
+     * Sets the input object for the view.
      * This is an optional operation and should be implemented only by views
      * that supports input (e.g. editors)
-     * @param input
      */
     void setInput(Object input);
 
     /**
-     * Get the current input if the view if any
+     * Gets the current input if the view if any.
+     *
      * @return the input if any input or null if none
      */
     Object getInput();
