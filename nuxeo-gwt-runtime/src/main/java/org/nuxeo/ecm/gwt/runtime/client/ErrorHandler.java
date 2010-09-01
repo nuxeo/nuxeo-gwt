@@ -26,5 +26,5 @@ package org.nuxeo.ecm.gwt.runtime.client;
 public interface ErrorHandler {
 
     void handleError(Throwable t);
-    
+
 }

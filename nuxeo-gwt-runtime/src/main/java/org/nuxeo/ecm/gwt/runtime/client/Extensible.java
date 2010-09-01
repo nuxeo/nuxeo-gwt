@@ -25,6 +25,6 @@ package org.nuxeo.ecm.gwt.runtime.client;
  */
 public interface Extensible {
 
-    public void registerExtension(String target, Object extension);
-    
+    void registerExtension(String target, Object extension);
+
 }

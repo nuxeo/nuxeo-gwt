@@ -39,6 +39,7 @@ import org.nuxeo.runtime.api.Framework;
  * @author <a href="mailto:bs@nuxeo.com">Bogdan Stefanescu</a>
  *
  */
+// XXX: Used by who?
 public class GWTHelper {
 
     // Utility class.
@@ -48,7 +49,6 @@ public class GWTHelper {
     public static String toJSon(DocumentModel doc) {
         return doc2JSon(doc).toString();
     }
-
 
     public static JSONArray getChildren(CoreSession session) { // the roots
         try {
@@ -142,14 +142,16 @@ public class GWTHelper {
     }
 
     public static JSONArray getChildrenFolders(CoreSession session, DocumentModel doc, String parentRef) {
-        JSONArray list  = new JSONArray();
-        if( doc == null ){
+        JSONArray list = new JSONArray();
+        if (doc == null) {
             return list;
         }
         try {
             DocumentModelList docs = session.getChildren(doc.getRef());
-            for ( DocumentModel d : docs) {
-                if (!d.isFolder()) continue;
+            for (DocumentModel d : docs) {
+                if (!d.isFolder()) {
+                    continue;
+                }
                 JSONObject o = new JSONObject();
                 o.put("id", d.getId());
                 o.put("parentId", parentRef);

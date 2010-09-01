@@ -18,13 +18,13 @@
 package org.nuxeo.ecm.gwt.runtime.client.model;
 
 public interface DocumentConstants {
-    public static final String KEY_PARENT_ID = "parentId";
-    public static final String KEY_ID = "id";
-    public static final String KEY_PATH = "path";
-    public static final String KEY_IS_FOLDERISH = "isFolderish";
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_TYPE = "type";
-    public static final String KEY_FACETS = "facets";
-    public static final String KEY_SCHEMAS = "schemas";
+    static final String KEY_PARENT_ID = "parentId";
+    static final String KEY_ID = "id";
+    static final String KEY_PATH = "path";
+    static final String KEY_IS_FOLDERISH = "isFolderish";
+    static final String KEY_TITLE = "title";
+    static final String KEY_TYPE = "type";
+    static final String KEY_FACETS = "facets";
+    static final String KEY_SCHEMAS = "schemas";
 
 }

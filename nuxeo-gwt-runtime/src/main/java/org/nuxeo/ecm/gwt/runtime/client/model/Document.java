@@ -78,7 +78,7 @@ public class Document extends JSONWrapper implements DocumentConstants {
     public String getTitle() {
         return getStringProperty("dublincore", "title");
     }
-    
+
     public String getParentId() {
         return getString(KEY_PARENT_ID);
     }
@@ -97,14 +97,14 @@ public class Document extends JSONWrapper implements DocumentConstants {
 
     public boolean isFolder() {
         String[] facets = getFacets();
-        for (String facet : facets) { 
+        for (String facet : facets) {
             if (facet.equals("Folderish")) {
                 return true;
             }
         }
         return false;
     }
-    
+
     public String[] getSchemas() {
         return getStringArray(KEY_SCHEMAS);
     }

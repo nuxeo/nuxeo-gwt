@@ -25,6 +25,6 @@ package org.nuxeo.ecm.gwt.runtime.client;
  */
 public interface Application {
 
-    public void start();
-    
+    void start();
+
 }
