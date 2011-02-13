@@ -12,7 +12,7 @@ import org.nuxeo.ecm.webengine.gwt.helper.GWTHelper;
 import org.nuxeo.ecm.core.api.*;
 import net.sf.json.*;
 
-
+@Path("/gwt")
 @WebObject(type="gwt", guard="user=Administrator")
 @Produces(["text/html", "*/*"])
 public class Main extends ModuleRoot {
