@@ -12,16 +12,23 @@
   <artifactId>nuxeo-gwt-runtime</artifactId>
   <name>Nuxeo GWT Runtime</name>
   <description>Nuxeo GWT Runtime</description>
+  
+  <properties>
+    <!-- Explicitly set GWT version to 1.5.3 to compile nuxeo-gwt-runtime module -->
+    <gwt.version>1.5.3</gwt.version>
+  </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
       <scope>provided</scope>
       <classifier>${platform}</classifier>
     </dependency>

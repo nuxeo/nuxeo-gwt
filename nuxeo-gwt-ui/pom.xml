@@ -12,11 +12,17 @@
   <artifactId>nuxeo-gwt-ui</artifactId>
   <name>Nuxeo GWT UI</name>
   <description>Nuxeo GWT UI</description>
+  
+  <properties>
+    <!-- Explicitly set GWT version to 1.5.3 to compile nuxeo-gwt-ui module -->
+    <gwt.version>1.5.3</gwt.version>
+  </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
       <scope>provided</scope>
     </dependency>
 
