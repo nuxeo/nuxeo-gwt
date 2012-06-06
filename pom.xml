@@ -16,7 +16,7 @@
   <description>Nuxeo GWT: Parent.</description>
 
   <properties>
-    <nuxeo.core.version>1.6.2-SNAPSHOT</nuxeo.core.version>
+    <nuxeo.core.version>5.3.2-SNAPSHOT</nuxeo.core.version>
     <nuxeo.gwt.version>5.3.2-SNAPSHOT</nuxeo.gwt.version>
     <nuxeo.webengine.version>5.3.2-SNAPSHOT</nuxeo.webengine.version>
     <nuxeo.services.version>5.3.2-SNAPSHOT</nuxeo.services.version>
