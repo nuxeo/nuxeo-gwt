@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.nuxeo.ecm.platform</groupId>
     <artifactId>nuxeo-services-parent</artifactId>
-    <version>5.4.2.1-SNAPSHOT</version>
+    <version>5.4.2-HF28</version>
   </parent>
 
   <groupId>org.nuxeo.ecm.gwt</groupId>
@@ -14,8 +14,8 @@
   <description>Nuxeo GWT: Parent.</description>
 
   <properties>
-    <nuxeo.gwt.version>5.4.2.1-SNAPSHOT</nuxeo.gwt.version>
-    <nuxeo.webengine.version>5.4.2.1-SNAPSHOT</nuxeo.webengine.version>
+    <nuxeo.gwt.version>5.4.2-HF28</nuxeo.gwt.version>
+    <nuxeo.webengine.version>5.4.2-HF28</nuxeo.webengine.version>
   </properties>
 
   <modules>
